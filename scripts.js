@@ -28,4 +28,28 @@ document.addEventListener('DOMContentLoaded', () => {
     buyButton.addEventListener('click', () => {
         window.location.href = 'billing.html';
     });
+     // Billing form submission handling
+     const billingForm = document.querySelector('.billing-form');
+     if (billingForm) {
+         billingForm.addEventListener('submit', (event) => {
+             event.preventDefault();
+ 
+             // Collect form data
+             const formData = new FormData(billingForm);
+             const billingData = {};
+             formData.forEach((value, key) => {
+                 billingData[key] = value;
+             });
+ 
+             // Display form data in console (for demonstration)
+             console.log('Billing Data:', billingData);
+ 
+             // Reset form after submission
+             billingForm.reset();
+ 
+             // Redirect to a confirmation page or display a success message
+             alert('Payment successful! Thank you for your purchase.');
+             window.location.href = 'index.html'; // Redirect to home page
+         });
+     }
 });
